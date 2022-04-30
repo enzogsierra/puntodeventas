@@ -12,6 +12,7 @@ public class HomeController
     public String home(Model model)
     {
         model.addAttribute("title", "Aplicacion Spring Boot");
+        model.addAttribute("subtitle", "Punto de Ventas");
         return "home";
     }
 }
