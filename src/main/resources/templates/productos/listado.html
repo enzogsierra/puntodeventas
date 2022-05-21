@@ -37,8 +37,36 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>1</td>
+                            <tr th:each="producto: ${productos}">
+                                <td th:text="${producto.id}"></td>
+                                <td class="text-center">
+                                    <img th:src="@{${producto.imagenUrl}}" alt="producto" height="100px">
+                                </td>
+                                <td th:text="${producto.codigoBarras}"></td>
+                                <td th:text="${producto.descripcion}"></td>
+                                <td th:text="${producto.precio}"></td>
+                                <td th:text="${producto.stock}"></td>
+                                <td class="text-end">
+                                    <a 
+                                        href="#" 
+                                        class="btn btn-warning" 
+                                        title="Editar"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom"
+                                    >
+                                        <i class='bx bx-edit-alt'></i>
+                                    </a>
+                                    <a 
+                                        href="#" 
+                                        class="btn btn-danger" 
+                                        title="Eliminar"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom"
+                                    >
+                                        <i class='bx bx-trash' ></i>
+                                    </a>
+                                </td>
+                                <!-- <td>1</td>
                                 <td>...</td>
                                 <td>3219832</td>
                                 <td>Coca Cola 2.25lts</td>
@@ -63,7 +91,7 @@
                                     >
                                         <i class='bx bx-trash' ></i>
                                     </a>
-                                </td>
+                                </td> -->
                             </tr>
                         </tbody>
                     </table>
