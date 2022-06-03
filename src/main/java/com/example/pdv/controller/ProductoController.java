@@ -30,28 +30,29 @@ public class ProductoController
     {
         model.addAttribute("titulo", "Listado de Productos");
         model.addAttribute("productos", productoService.all());
-        return "productos/listado";
+        return "productos/index";
     }
 
 
-    @GetMapping("/nuevo")
+    @GetMapping("/crear")
     public String nuevo(Model model)
     {
         model.addAttribute("titulo", "Nuevo Producto");
         model.addAttribute("producto", new Producto());
-        return "productos/nuevo";
+        return "productos/crear";
     }
 
-    @PostMapping("/nuevo")
+    @PostMapping("/crear")
     public String crear(@Valid Producto producto, BindingResult result, RedirectAttributes redirect, Model model)
     {
         // Verificar si hay errores
         if(result.hasErrors())
         {
-            model.addAttribute("danger", "Datos erróneos");
-            return "productos/nuevo";
+            return "productos/crear";
         }
 
+
+        redirect.addFlashAttribute("successMsg", "Producto creado correctamente");
         return "redirect:/productos/";
     }
 }

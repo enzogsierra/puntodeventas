@@ -12,6 +12,6 @@ public class ClienteController
     @GetMapping(value = {"", "/"})
     public String home(Model model)
     {
-        return "clientes/listado";
+        return "clientes/index";
     }
 }

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -35,6 +36,7 @@ public class Producto
     private BigDecimal precio;
 
     @NotNull(message = "El stock es requerido")
+    @Min(value = 1, message = "El stock no puede ser 0")
     private int stock;
 
     @NotNull(message = "La imagen es requerida")

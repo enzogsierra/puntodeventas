@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html 
+    lang="es" 
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="https://www.thymeleaf.org/"
+    xmlns:layout="https://ultraq.net.nz/thymeleaf/layout" 
+    layout:decorate="~{layout}">
+
+    <head>
+        <title th:if="${title}" th:text="${title}"></title>
+        <title th:unless="${title}">Punto de Venta - Java Spring Boot</title>
+    </head>
+
+    <div layout:fragment="content">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title" th:text="${title}"></h5>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-striped table-hover table-bordered" id="tablaProductos">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+                            <th>Dirección</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Enzo</td>
+                            <td>Sierra</td>
+                            <td>enzo@mail.com</td>
+                            <td>Calle Castelli</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-footer">
+                <div class="text-end">
+                    <a th:href="@{/usuarios/crear}" class="btn btn-primary">Nuevo usuario</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

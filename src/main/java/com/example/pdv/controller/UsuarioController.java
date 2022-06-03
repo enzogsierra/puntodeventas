@@ -15,6 +15,6 @@ public class UsuarioController
     public String home(Model model)
     {
         model.addAttribute("title", "Listado de Usuarios");
-        return "usuarios/listado.html";
+        return "usuarios/index";
     }
 }
