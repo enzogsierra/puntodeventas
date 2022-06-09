@@ -44,7 +44,7 @@
                             <td th:text="${producto.stock}"></td>
                             <td class="text-end">
                                 <a 
-                                    th:href="@{/productos/editar}" 
+                                    th:href="@{/productos/editar/{id} (id = ${producto.id})}" 
                                     class="btn btn-warning" 
                                     title="Editar"
                                     data-bs-toggle="tooltip"
@@ -53,11 +53,12 @@
                                     <i class='bx bx-edit-alt'></i>
                                 </a>
                                 <a 
-                                    href="#" 
+                                    th:href="@{/productos/eliminar/{id} (id = ${producto.id})}" 
                                     class="btn btn-danger" 
-                                    title="Eliminar"
+                                    title="Archivar"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="bottom"
+                                    id="deleteProductBtn"
                                     >
                                     <i class='bx bx-trash' ></i>
                                 </a>
@@ -68,7 +69,7 @@
             </div>
 
             <div class="card-footer">
-                <div class="text-end">
+                <div class="text-start">
                     <a th:href="@{/productos/crear}" class="btn btn-primary">Nuevo producto</a>
                 </div>
             </div>

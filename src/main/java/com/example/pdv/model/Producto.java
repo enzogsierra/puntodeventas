@@ -12,12 +12,14 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
 
 @Entity
 @Table(name = "productos")
+@Where(clause = "activo = true")
 public class Producto 
 {
     @Id
