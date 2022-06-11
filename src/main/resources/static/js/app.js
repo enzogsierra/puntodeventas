@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () =>
 });
 
 
-
+// Boton de eliminar (archivar) producto
 function deleteProductHanlder()
 {
     const btn = document.querySelector("a#deleteProductBtn");

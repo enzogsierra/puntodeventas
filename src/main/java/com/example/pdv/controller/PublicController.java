@@ -11,7 +11,7 @@ public class PublicController
     @GetMapping(value = {"", "/"})
     public String home(Model model)
     {
-        model.addAttribute("title", "Gestión de Punto de Ventas - Dashboard");
+        //model.addAttribute("title", "Gestión de Punto de Ventas - Dashboard");
         return "index";
     }
 }
