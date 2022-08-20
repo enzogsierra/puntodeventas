@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html 
+    lang="es"
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="https://www.thymeleaf.org/"
+    xmlns:layout="https://ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}"
+    >
+
+    <head>
+        <title th:if="${title}" th:text="${title}"></title>
+        <title th:unless="${title}">Punto de Venta - Java Spring Boot</title>
+    
+        <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    </head>
+
+    <div layout:fragment="content">
+
+
+        <script th:fragment="js"></script>
+    </div>
+</html>

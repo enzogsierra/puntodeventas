@@ -8,9 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.NumberFormat;
@@ -26,7 +28,7 @@ public class Producto
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(length = 13)
+    @Size(min = 13, max = 13, message = "El código de barras debe ser de 13 caracteres")
     private String codigoBarras;
 
     @Column(length = 64)

@@ -9,7 +9,7 @@ public interface IProductoService
 {
     List<Producto> all();
     Optional<Producto> findById(Integer id);
-    List<Producto> search(String search);
+    List<Producto> search(String criteria);
 
     void save(Producto producto);
     void update(Producto producto);

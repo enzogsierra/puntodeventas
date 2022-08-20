@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html 
+    lang="es"
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="https://www.thymeleaf.org/"
+    xmlns:layout="https://ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}"
+    >
+
+    <head>
+        <title th:if="${title}" th:text="${title}"></title>
+        <title th:unless="${title}">Punto de Venta - Java Spring Boot</title>
+    
+        <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    </head>
+
+    <div layout:fragment="content">
+        <form th:action="@{/ventas/guardar}" th:object="${venta}" method="POST" id="form">
+            <div class="card">
+                <div class="card-header">
+                    <div th:text="#{ventas.form.title}"></div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col col-3">
+                            <div class="form-group">
+                                <small class="card-text" th:text="#{ventas.form.date}"></small>
+                                <label th:field="*{fecha}" th:text="*{#temporals.format(fecha, 'dd/MM/yyyy - HH:mm')}"></label>
+                            </div>
+                        </div>
+
+                        <div class="col col-5">
+                            <div class="form-group">
+                                <small class="card-text" th:text="#{ventas.form.description}"></small>
+                                <textarea class="form-control" rows="3" th:field="*{descripcion}"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col col-4">
+                            <div class="form-group">
+                                <small class="card-text" th:text="#{ventas.form.total}"></small>
+                                <h4 id="total" class="text-success">$0</h4>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Buscar por producto -->
+                        <div class="row">
+                            <div class="col col-12">
+                                <div class="form-group">
+                                    <label for="buscar_producto" class="form-label" th:text="#{ventas.form.search}"></label>
+                                    <input type="search" id="buscar_producto" name="buscar_producto" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tabla de productos - oculta -->
+                        <table class="d-none">
+                            <tbody id="ventaItems">
+                                <tr id="row_{ID}">
+                                    <td>
+                                        <input type="hidden" value="{ID}" name="name_id[]">
+                                    </td>
+                                    <td>
+                                        {DESCRIPCION}
+                                    </td>
+                                    <td>
+                                        {PRECIO}
+                                    </td>
+                                    <td>
+                                        <input type="number" value="1" min="1" name="cantidad[]" id="cantidad_{ID}">
+                                    </td>
+                                    <td>
+                                        <span id="subtotal_{ID}">$0.00</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Tabla de productos - renderizada -->
+                        <div class="col">
+                            <table class="my-4 table table-bordered table-hover table-striped" id="tabla">
+                                <thead>
+                                    <tr>
+                                        <th>Descripción</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary float-end">Registrar venta</a>
+                </div>
+            </div>
+        </form>
+
+        <script th:fragment="js"></script>
+    </div>
+</html>

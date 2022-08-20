@@ -32,9 +32,9 @@ public class ProductoServiceImpl implements IProductoService
     
     @Override
     @Transactional(readOnly = true)
-    public List<Producto> search(String search) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Producto> search(String criteria) 
+    {
+        return productoRepository.findByCriteria(criteria);
     }
 
     @Override
