@@ -84,7 +84,7 @@ public class VentaController
         Producto producto;
 
         // Crear las líneas de la venta
-        for(int i = 0; i < items.size(); i++)
+        for(int i = 1; i < items.size(); i++)
         {
             linea = new LineaVenta();
             Integer id = Integer.parseInt(items.get(i));
@@ -93,6 +93,7 @@ public class VentaController
 
             linea.setProducto(producto);
             linea.setCantidad(amount);
+            linea.setPrecio(producto.getPrecio());
             venta.agregarLinea(linea);
         }
 
@@ -100,7 +101,7 @@ public class VentaController
         status.setComplete();
 
         flash.addFlashAttribute("successMsg", "Venta registrada");
-        return "redirect: /ventas";
+        return "redirect:/";
     }
 
     @GetMapping(value = "/buscar/{query}", produces = {"application/json"})

@@ -15,7 +15,7 @@
     </head>
 
     <div layout:fragment="content">
-        <form th:action="@{/ventas/guardar}" th:object="${venta}" method="POST" id="form">
+        <form th:action="@{/ventas/nuevo}" th:object="${venta}" method="POST" id="form">
             <div class="card">
                 <div class="card-header">
                     <div th:text="#{ventas.form.title}"></div>
@@ -40,7 +40,7 @@
                         <div class="col col-4">
                             <div class="form-group">
                                 <small class="card-text" th:text="#{ventas.form.total}"></small>
-                                <h4 id="total" class="text-success">$0</h4>
+                                <h4 class="text-success">$ <span id="total">0.0</span></h4>
                             </div>
                         </div>
 
@@ -60,8 +60,8 @@
                         <table class="d-none">
                             <tbody id="ventaItems">
                                 <tr id="row_{ID}">
-                                    <td>
-                                        <input type="hidden" value="{ID}" name="name_id[]">
+                                    <td class="d-none">
+                                        <input type="hidden" value="{ID}" name="item_id[]">
                                     </td>
                                     <td>
                                         {DESCRIPCION}
@@ -70,10 +70,13 @@
                                         {PRECIO}
                                     </td>
                                     <td>
-                                        <input type="number" value="1" min="1" name="cantidad[]" id="cantidad_{ID}">
+                                        <input type="number" class="form-control" value="1" min="1" name="cantidad[]" id="cantidad_{ID}" onchange="utils.subtotal({ID}, {PRECIO}, this.value)">
                                     </td>
                                     <td>
-                                        <span id="subtotal_{ID}">$0.00</span>
+                                        $ <span id="subtotal_{ID}">0.00</span>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="utils.deleteRow({ID});"><i class="bx bx-trash"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -88,19 +91,25 @@
                                         <th>Precio</th>
                                         <th>Cantidad</th>
                                         <th>Subtotal</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
+
+                                <tbody>
+                                    
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary float-end">Registrar venta</a>
+                    <button type="submit" class="btn btn-primary float-end">Registrar venta</button>
                 </div>
             </div>
         </form>
 
-        <script th:fragment="js"></script>
     </div>
+    
+    <script th:fragment="js" th:src="@{/js/ventas.js}"></script>
 </html>
